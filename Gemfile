@@ -20,13 +20,14 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'administrate'
 gem 'bootstrap', '~> 4.0.0.alpha3.1'
-#gem 'bourbon'
+gem 'bourbon'
 gem 'devise'
 gem 'devise_invitable'
 gem 'haml-rails'
 gem 'high_voltage'
 
 group :development do
+  gem 'letter_opener'
   gem 'better_errors'
   gem 'capistrano', '~> 3.0.1'
   gem 'capistrano-bundler'
