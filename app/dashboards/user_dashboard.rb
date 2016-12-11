@@ -83,29 +83,10 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :invited_by,
     :email,
-    :encrypted_password,
-    :reset_password_token,
-    :reset_password_sent_at,
-    :remember_created_at,
-    :sign_in_count,
-    :current_sign_in_at,
-    :last_sign_in_at,
-    :current_sign_in_ip,
-    :last_sign_in_ip,
     :name,
-    :confirmation_token,
-    :confirmed_at,
-    :confirmation_sent_at,
-    :unconfirmed_email,
     :role,
-    :invitation_token,
-    :invitation_created_at,
-    :invitation_sent_at,
-    :invitation_accepted_at,
     :invitation_limit,
-    :invitations_count,
   ].freeze
 
   # Overwrite this method to customize how users are displayed
