@@ -1,0 +1,30 @@
+%h1 Владеешь информацией  - владеешь миром!
+%div Инструмент для принятия правильных решений  - управление  бизнесом, проектом, филиалом или командой.
+%br
+%br
+.row
+  .col-xs-8
+    %h4 Как это работает
+    %ol
+      %li Регистрируетесь и получаете личный информационный центр
+      %li Указываете какие статистики вы хотите получать
+      %li Выдаете доступ сотруднику/ам для их заполнения
+      %li Получаете аналитику по компании и статистики подразделений
+      %li Принимаете правильные решения
+      %li Развиваете свой бизнес быстро и комфортно
+  .col-xs-4
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
+      %h5 Вход
+      = devise_error_messages!
+      .form-group
+        = f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Емейл'
+      .form-group
+        = f.password_field :password, class: 'form-control', placeholder: 'Пароль'
+      - if devise_mapping.rememberable?
+        %span.checkbox{:style => "width:150px"}
+          %label
+            = f.check_box :remember_me
+            Запомнить меня
+      = f.submit 'Войти', :class => 'button-xs right'
+      - if devise_mapping.recoverable?
+        %div= link_to "Забыли пароль?", new_password_path(resource_name), class: 'right'

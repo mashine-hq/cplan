@@ -7,6 +7,9 @@ img {
   @extend .img-fluid;
   margin: 0 auto;
 }
+footer {
+  margin-top: 20px;
+}
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;

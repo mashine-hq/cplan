@@ -20,13 +20,14 @@ module Cplan
   class Application < Rails::Application
 
     config.generators do |g|
+      config.i18n.default_locale = :ru
       g.test_framework :rspec,
-        fixtures: true,
-        view_specs: false,
-        helper_specs: false,
-        routing_specs: false,
-        controller_specs: false,
-        request_specs: false
+                       fixtures: true,
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       controller_specs: false,
+                       request_specs: false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
