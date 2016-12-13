@@ -19,12 +19,17 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+ru:
   activerecord:
     attributes:
       department:
-        user: User
-        position: Position
+        name: Название
+        user: Пользователь
+        position: Положение
     models:
-      user: User
-      department: Department
+      user: Пользователь
+      department: Департамент
+  flash:
+    success: Данные успешно сохранены
+    success_destroy: Данные успешно удалены
+    denied: Доступ запрещен

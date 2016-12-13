@@ -6,5 +6,6 @@
         %button.navbar-toggler.hidden-sm-up.nav-link{"aria-controls" => "exCollapsingNavbar2", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"}
           \ &#9776;
     .collapse.navbar-toggleable-xs
-      = link_to "Главная", root_path, class: 'navbar-brand'
+      = link_to 'Главная', root_path, class: 'navbar-brand'
+      = link_to 'О нас', page_path('about'), class: 'navbar-brand'
       %ul.nav.navbar-nav.float-xs-right= render 'layouts/nav_links_for_auth'

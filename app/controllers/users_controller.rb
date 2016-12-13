@@ -8,33 +8,31 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    unless current_user.owner?
-      unless @user == current_user
-        redirect_to root_path, :alert => "Access denied."
-      end
+    if !current_user.owner? && !@user.id.eql?(current_user.id)
+      redirect_to root_path, alert: t('flash.denied')
     end
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(secure_params)
-      redirect_to users_path, :notice => "User updated."
+      redirect_to users_path, notice: t('flash.success')
     else
-      redirect_to users_path, :alert => "Unable to update user."
+      redirect_to users_path, alert: 'Невозможно изменить'
     end
   end
 
   def destroy
     user = User.find(params[:id])
     user.destroy
-    redirect_to users_path, :notice => "User deleted."
+    redirect_to users_path, notice: t('flash.success_destroy')
   end
 
   private
 
   def admin_only
     unless current_user.owner?
-      redirect_to root_path, :alert => "Access denied."
+      redirect_to root_path, alert: t('flash.denied')
     end
   end
 

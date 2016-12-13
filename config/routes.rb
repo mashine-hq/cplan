@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :departments
   namespace :admin do
     resources :users
     root to: "users#index"

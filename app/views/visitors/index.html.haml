@@ -1,3 +1,14 @@
-%h3 Welcome
-%p
-  #{link_to('Users:', users_path)} #{User.count} registered
+-#%h3 Добро пожаловать
+- if current_user.owner?
+  %h4 С чего начать?
+  %ol
+    - unless current_user.has_departments?
+      %li= link_to 'Создайте Департаменты', new_department_path
+    - else
+      %li= link_to 'Департаменты', departments_path
+    - unless current_user.has_workers?
+      %li= link_to 'Подключите пользователей в департаменты', new_user_path
+    %li= link_to 'Создайте Статистики', '#'
+    %li= link_to 'Напишите должностные инструкции', '#'
+  %p
+    #{link_to('Users:', users_path)} #{User.count} registered
