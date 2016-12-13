@@ -28,6 +28,7 @@ module Cplan
                        routing_specs: false,
                        controller_specs: false,
                        request_specs: false
+      g.stylesheets false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 

@@ -42,6 +42,7 @@ class User < ApplicationRecord
   after_initialize :set_default_role, :if => :new_record?
   validates :phone, phone: {possible: true, allow_blank: true, types: [:mobile]}
   has_many :departments
+  has_many :statistics
   scope :workers, ->(user_id) { where(invited_by_id: user_id).order(:name) }
 
   def set_default_role
@@ -54,6 +55,10 @@ class User < ApplicationRecord
 
   def has_workers?
     User.workers(self.id).count > 0
+  end
+
+  def has_statistics?
+    self.statistics.count > 0
   end
 
   def update_with_password(params={})

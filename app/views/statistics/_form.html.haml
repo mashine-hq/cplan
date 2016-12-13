@@ -1,0 +1,8 @@
+= simple_form_for(@statistic) do |f|
+  .form-inputs
+    = f.input :name
+    = f.association :department
+    = f.input :units
+
+  .form-actions
+    = f.button :submit

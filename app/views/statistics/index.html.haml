@@ -1,0 +1,22 @@
+%h1 Статистики
+
+%table.table.table-responsive
+  %thead
+    %tr
+      %th Name
+      %th #{model_name('department')}
+      %th Units
+      %th= link_to 'New Statistic', new_statistic_path, class: 'btn-success button-xs'
+
+  %tbody
+    - @statistics.decorate.each do |statistic|
+      %tr
+        %td= statistic.name
+        %td= statistic.department
+        %td= statistic.units
+        %td
+          = link_to 'Show', statistic
+          = link_to 'Edit', edit_statistic_path(statistic)
+          = link_to 'Destroy', statistic, :method => :delete, :data => { :confirm => t('confirm') }
+
+%br

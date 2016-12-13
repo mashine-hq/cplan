@@ -6,9 +6,13 @@
       %li= link_to 'Создайте Департаменты', new_department_path
     - else
       %li= link_to 'Департаменты', departments_path
+    - unless current_user.has_statistics?
+      %li= link_to 'Создайте Статистики', new_statistic_path
+    - else
+      %li= link_to 'Статистики', statistics_path
     - unless current_user.has_workers?
       %li= link_to 'Подключите пользователей в департаменты', new_user_path
-    %li= link_to 'Создайте Статистики', '#'
+
     %li= link_to 'Напишите должностные инструкции', '#'
   %p
     #{link_to('Users:', users_path)} #{User.count} registered

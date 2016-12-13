@@ -15,11 +15,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(secure_params)
-      redirect_to users_path, notice: t('flash.success')
-    else
-      redirect_to users_path, alert: 'Невозможно изменить'
-    end
+    redirect_to users_path, @user.update_attributes(secure_params) ? {notice: t('flash.success')} : {alert: t('flash.update_fail')}
   end
 
   def destroy

@@ -26,10 +26,17 @@ ru:
         name: Название
         user: Пользователь
         position: Положение
+      statistic:
+        name: Название
+        user: Пользователь
+        units: Ед. Измерения
+        department: Департамент
     models:
       user: Пользователь
       department: Департамент
+  confirm: Вы уверены?
   flash:
     success: Данные успешно сохранены
     success_destroy: Данные успешно удалены
+    update_fail: Невозможно сохранить
     denied: Доступ запрещен

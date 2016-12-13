@@ -1,0 +1,13 @@
+- @statistic = @statistic.decorate
+%p
+  %b Name:
+  = @statistic.name
+%p
+  %b #{model_name('department')}:
+  = @statistic.department
+
+%p
+  %b Units:
+  = @statistic.units
+
+= link_to 'Изменить', edit_statistic_path(@statistic)
