@@ -1,4 +1,4 @@
-class StatisticDecorator < Draper::Decorator
+class StatisticDecorator < Drape::Decorator
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through

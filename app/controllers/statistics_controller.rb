@@ -4,7 +4,7 @@ class StatisticsController < ApplicationController
   # GET /statistics
   # GET /statistics.json
   def index
-    @statistics = current_user.statistics.all
+    @statistics = current_user.statistics.includes(:department).all
   end
 
   # GET /statistics/1

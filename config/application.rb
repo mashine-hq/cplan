@@ -18,7 +18,6 @@ Bundler.require(*Rails.groups)
 
 module Cplan
   class Application < Rails::Application
-
     config.generators do |g|
       config.i18n.default_locale = :ru
       g.test_framework :rspec,

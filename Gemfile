@@ -11,7 +11,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'simple_form'
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
-gem 'draper'
+gem 'drape'
+gem 'chartjs-ror'  #https://github.com/airblade/chartjs-ror
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
@@ -25,7 +26,6 @@ group :development do
   gem 'listen', '~> 3.0.5'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'administrate'
 gem 'bootstrap', '~> 4.0.0.alpha3.1'
 gem 'bourbon'
