@@ -10,6 +10,14 @@ class DepartmentsController < ApplicationController
   # GET /departments/1
   # GET /departments/1.json
   def show
+    @stats = @department.statistics.all
+    unless @stats.empty?
+      column_condition = @stats.map { |stat| "sum(case when reports.statistic_id = '#{stat.id}' then units else 0 end) AS #{stat.name}" }.join(",\n")
+      result = Report.connection.select_all("SELECT report_at, #{column_condition} FROM reports GROUP BY report_at ORDER BY report_at")
+      @stats = {columns: result.first.keys.to_a, rows: result.map(&:values)}
+    else
+      @stats = {columns: [], rows: []}
+    end
   end
 
   # GET /departments/new
@@ -56,7 +64,7 @@ class DepartmentsController < ApplicationController
   def destroy
     @department.destroy
     respond_to do |format|
-      format.html { redirect_to departments_url, notice: t('flash.success_destroy')}
+      format.html { redirect_to departments_url, notice: t('flash.success_destroy') }
       format.json { head :no_content }
     end
   end

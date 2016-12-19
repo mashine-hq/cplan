@@ -1,13 +1,32 @@
 - @statistic = @statistic.decorate
-%p
-  %b Name:
-  = @statistic.name
-%p
-  %b #{model_name('department')}:
-  = @statistic.department
+%ol.breadcrumb
+  %li.breadcrumb-item= link_to(@statistic.department, department_path(@statistic.department_id))
+  %li.breadcrumb-item.active #{@statistic.name} (#{@statistic.units})
+  %li.float-xs-right= link_to 'Изменить', edit_statistic_path(@statistic), class: 'button-xs btn-success'
 
-%p
-  %b Units:
-  = @statistic.units
+= render partial: 'report_form', locals: {statistic: @statistic.object}
 
-= link_to 'Изменить', edit_statistic_path(@statistic)
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+- rows = @stats[:rows].map{ |row|  date = row[0].split('-'); "data.addRow([#{'new Date('+[date[0], date[1].to_i - 1, date[2] ].join(',')+')'}, #{row[1..-1].map(&:to_i).join(',')}]);" }.join("\n")
+- columns = @stats[:columns][1..-1].map{|column| "data.addColumn('number','#{column}');"}.join("\n")
+- content_for :javascript do
+
+  :javascript
+    google.charts.load('current', {'packages':['annotationchart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn({type: 'date', label: 'Date'});
+      #{columns}
+      #{rows}
+      var chart = new google.visualization.AnnotationChart(document.getElementById('time_line_chart'));
+      var options = {
+        displayAnnotations: true
+      };
+      chart.draw(data, options);
+      $('#time_line_chart_AnnotationChart_zoomControlContainer_1-month').click();
+    }
+
+.row
+  .col-xs-6
+    #time_line_chart

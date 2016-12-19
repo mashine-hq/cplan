@@ -1,13 +1,40 @@
-%p
-  %b User:
-  = @department.user
-%p
-  %b Name:
-  = @department.name
-%p
-  %b Position:
-  = @department.position
+%h3 #{@department.name} Департамент
+
+%h4 Статистики
+%ol
+  - @department.statistics.each do |stat|
+    %li= link_to(stat.name, statistic_path(stat))
 
 = link_to 'Edit', edit_department_path(@department)
-\|
-= link_to 'Back', departments_path
+= link_to 'Все', departments_path
+
+- content_for :javascript do
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  - rows = @stats[:rows].map{ |row|  date = row[0].split('-'); "[#{'new Date('+[date[0], date[1].to_i - 1, date[2] ].join(',')+')'}, #{row[1..-1].map(&:to_i).join(',')}]"}.join(",\n")
+  - columns = @stats[:columns][0..-1].map{|column| column}
+  :javascript
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawVisualization);
+
+    function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+      var data = google.visualization.arrayToDataTable([
+        #{columns},
+        #{rows}
+    ]);
+
+    var options = {
+      title : 'Статистики',
+      vAxis: {title: 'Ед.'},
+      //hAxis: {title: 'Month'},
+      seriesType: 'bars',
+      series: {#{@stats.count}: {type: 'line'}}
+    };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+    }
+
+.row
+  .col-xs-8
+    #chart_div

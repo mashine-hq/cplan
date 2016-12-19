@@ -13,12 +13,12 @@
 
 class Report < ApplicationRecord
   belongs_to :statistic
-  validates :units, :report_date, presence: true
+  validates :units, :report_at, presence: true
   before_create :set_summary
 
   private
   def set_summary
-    self.report_date ||= Date.current
+    self.report_at ||= Date.current
     self.summary = Report.where(statistic_id: self.statistic_id).sum(:units) + self.units
   end
 end

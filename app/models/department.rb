@@ -12,6 +12,8 @@
 
 class Department < ApplicationRecord
   belongs_to :user
+  has_many :statistics
+
   validates :name, uniqueness: true, presence: true
   validates_associated :user
   scope :ordered, -> { order(:position, :name) }

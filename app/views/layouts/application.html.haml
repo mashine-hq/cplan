@@ -4,7 +4,6 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title= content_for?(:title) ? yield(:title) : 'SmartStatistic'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'SmartStatistic'}"}
-    = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   %body
     %header
@@ -15,5 +14,6 @@
       = yield
     %footer.text-xs-center
       SMARTSTATISTIC 2016
+    = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = content_for?(:javascript) ? yield(:javascript) : ''

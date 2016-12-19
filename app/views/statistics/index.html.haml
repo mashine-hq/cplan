@@ -12,7 +12,7 @@
     - @statistics.decorate.each do |statistic|
       %tr
         %td= statistic.name
-        %td= statistic.department
+        %td= link_to(statistic.department, department_path(statistic.department_id))
         %td= statistic.units
         %td
           = link_to 'Show', statistic

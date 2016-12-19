@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root to: 'visitors#index'
 
-  resources :statistics
+  resources :statistics do
+    resources :reports, only: [:index, :create]
+  end
+
   resources :departments
   namespace :admin do
     resources :users
