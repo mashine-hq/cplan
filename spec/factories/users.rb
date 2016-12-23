@@ -30,6 +30,8 @@
 #  invited_by_id          :integer
 #  invitations_count      :integer          default(0)
 #  phone                  :string
+#  provider               :string
+#  uid                    :string
 #
 
 FactoryGirl.define do

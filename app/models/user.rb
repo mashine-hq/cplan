@@ -30,6 +30,8 @@
 #  invited_by_id          :integer
 #  invitations_count      :integer          default(0)
 #  phone                  :string
+#  provider               :string
+#  uid                    :string
 #
 
 class User < ApplicationRecord
@@ -37,8 +39,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, #:confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
-
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
   after_initialize :set_default_role, :if => :new_record?
   validates :phone, phone: {possible: true, allow_blank: true, types: [:mobile]}
   has_many :departments
@@ -68,4 +69,21 @@ class User < ApplicationRecord
     end
     update_attributes(params)
   end
+
+  #https://github.com/zquestz/omniauth-google-oauth2#auth-hash
+  def self.find_for_google_oauth2(auth_hash, signed_in_resource=nil)
+    data = auth_hash.info
+    user = User.where(provider: auth_hash.provider, uid: auth_hash.uid).first
+    unless user
+      registered_user = User.where(email: auth_hash.info.email).first
+      user = registered_user ? registered_user :
+        User.create(name: data['name'],
+                    provider: auth_hash.provider,
+                    email: data['email'],
+                    uid: auth_hash.uid,
+                    password: Devise.friendly_token[0, 20])
+    end
+    user
+  end
+
 end

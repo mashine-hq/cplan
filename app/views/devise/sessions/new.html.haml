@@ -28,3 +28,5 @@
       = f.submit 'Войти', :class => 'button-xs right'
       - if devise_mapping.recoverable?
         %div= link_to "Забыли пароль?", new_password_path(resource_name), class: 'right'
+      -#= link_to "Войти через Google1", user_omniauth_authorize_path(:google_oauth2)
+      = link_to "Войти через Google2", user_google_oauth2_omniauth_authorize_path
