@@ -73,6 +73,13 @@ class User < ApplicationRecord
   #https://github.com/zquestz/omniauth-google-oauth2#auth-hash
   def self.find_for_google_oauth2(auth_hash, signed_in_resource=nil)
     data = auth_hash.info
+    # {
+    #   :name => "John Doe",
+    #   :email => "john@company_name.com",
+    #   :first_name => "John",
+    #   :last_name => "Doe",
+    #   :image => "https://lh3.googleusercontent.com/url/photo.jpg"
+    # },
     user = User.where(provider: auth_hash.provider, uid: auth_hash.uid).first
     unless user
       registered_user = User.where(email: auth_hash.info.email).first
