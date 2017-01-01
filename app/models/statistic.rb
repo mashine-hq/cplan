@@ -15,7 +15,7 @@ class Statistic < ApplicationRecord
   belongs_to :user
   belongs_to :section
 
-  validates_associated :user, :section
+  validates_presence_of :user_id, :section_id
   validates :name, :units, presence: true, allow_blank: false
 
 end

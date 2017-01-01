@@ -13,7 +13,7 @@ class StatisticsController < ApplicationController
   def show
     #stat_ids = [1, 3]
     stats = Statistic.where(id: params[:id]).all
-    column_condition = stats.map { |stat| "sum(case when reports.statistic_id = '#{stat.id}' then summary else 0 end) AS #{stat.name}" }.join(",\n")
+    column_condition = stats.map { |stat| "sum(case when reports.statistic_id = '#{stat.id}' then summary else 0 end) AS \"#{stat.name}\"" }.join(",\n")
     result = Report.connection.select_all("SELECT report_at, #{column_condition} FROM reports GROUP BY report_at ORDER BY report_at")
     @stats = {columns: result.first.keys.to_a, rows: result.map(&:values)}
   end

@@ -1,23 +1,19 @@
-%h1 Listing sections
+%h3 Список отделов
 
 %table
   %thead
     %tr
       %th Department
       %th Name
-      %th
-      %th
-      %th
+      %th= link_to 'Новый отдел', new_section_path, class: 'btn btn-success btn-xs'
 
   %tbody
     - @sections.each do |section|
       %tr
         %td= section.department
         %td= section.name
-        %td= link_to 'Show', section
-        %td= link_to 'Edit', edit_section_path(section)
-        %td= link_to 'Destroy', section, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td
+          = link_to 'Show', section
+          = link_to 'Edit', edit_section_path(section)
+          = link_to 'Destroy', section, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Section', new_section_path
