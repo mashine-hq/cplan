@@ -10,6 +10,10 @@ class DepartmentDecorator < Drape::Decorator
   #     end
   #   end
 
+  def to_s
+    object.name
+  end
+
   def user
     object.user.name
   end

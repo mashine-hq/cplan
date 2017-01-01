@@ -1,8 +1,11 @@
 class VisitorsController < ApplicationController
-  skip_before_action :authenticate_user!
+  #skip_before_action :authenticate_user!
+  layout 'dashboard'
 
   def index
-    unless current_user
+    if current_user
+      @departments = current_user.departments
+    else
       redirect_to new_user_session_path
     end
   end

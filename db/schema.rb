@@ -34,14 +34,22 @@ ActiveRecord::Schema.define(version: 20161219151241) do
     t.index ["statistic_id"], name: "index_reports_on_statistic_id", using: :btree
   end
 
+  create_table "sections", force: :cascade do |t|
+    t.integer  "department_id"
+    t.string   "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["department_id"], name: "index_sections_on_department_id", using: :btree
+  end
+
   create_table "statistics", force: :cascade do |t|
     t.string   "name"
     t.string   "units"
     t.integer  "user_id"
-    t.integer  "department_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["department_id"], name: "index_statistics_on_department_id", using: :btree
+    t.integer  "section_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_id"], name: "index_statistics_on_section_id", using: :btree
     t.index ["user_id"], name: "index_statistics_on_user_id", using: :btree
   end
 
@@ -84,6 +92,6 @@ ActiveRecord::Schema.define(version: 20161219151241) do
 
   add_foreign_key "departments", "users"
   add_foreign_key "reports", "statistics"
-  add_foreign_key "statistics", "departments"
+  add_foreign_key "statistics", "sections"
   add_foreign_key "statistics", "users"
 end

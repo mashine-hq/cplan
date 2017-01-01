@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sections
   root to: 'visitors#index'
 
   resources :statistics do

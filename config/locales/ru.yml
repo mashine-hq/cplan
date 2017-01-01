@@ -31,6 +31,7 @@ ru:
         user: Пользователь
         units: Ед. Измерения
         department: Департамент
+        section: Отдел
       report:
         units: Единицы
         report_at: Дата
@@ -44,6 +45,8 @@ ru:
       user: Пользователь
       department: Департамент
       report: Отчет
+      section: Отдел
+      statistic: Статистика
   confirm: Вы уверены?
   flash:
     success: Данные успешно сохранены

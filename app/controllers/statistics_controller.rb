@@ -1,10 +1,11 @@
 class StatisticsController < ApplicationController
   before_action :set_statistic, only: [:show, :edit, :update, :destroy]
+  layout 'dashboard'
 
   # GET /statistics
   # GET /statistics.json
   def index
-    @statistics = current_user.statistics.includes(:department).all
+    @statistics = current_user.statistics.includes(:section).all
   end
 
   # GET /statistics/1
@@ -20,15 +21,18 @@ class StatisticsController < ApplicationController
   # GET /statistics/new
   def new
     @statistic = Statistic.new
+    @departments =  current_user.departments
   end
 
   # GET /statistics/1/edit
   def edit
+    @departments = current_user.departments
   end
 
   # POST /statistics
   # POST /statistics.json
   def create
+    @departments =  current_user.departments
     @statistic = Statistic.new(statistic_params)
     @statistic.user = current_user
     respond_to do |format|
@@ -74,6 +78,6 @@ class StatisticsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def statistic_params
-    params.require(:statistic).permit(:name, :user_id, :department_id, :units)
+    params.require(:statistic).permit(:name, :user_id, :section_id, :units)
   end
 end

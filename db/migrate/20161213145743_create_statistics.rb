@@ -4,7 +4,7 @@ class CreateStatistics < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :units
       t.references :user, foreign_key: true
-      t.references :department, foreign_key: true
+      t.references :section, foreign_key: true
 
       t.timestamps
     end

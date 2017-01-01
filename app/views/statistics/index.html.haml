@@ -4,7 +4,7 @@
   %thead
     %tr
       %th Name
-      %th #{model_name('department')}
+      %th #{model_name('section')}
       %th Units
       %th= link_to 'New Statistic', new_statistic_path, class: 'btn-success button-xs'
 
@@ -12,7 +12,7 @@
     - @statistics.decorate.each do |statistic|
       %tr
         %td= statistic.name
-        %td= link_to(statistic.department, department_path(statistic.department_id))
+        %td= link_to(statistic.section, section_path(statistic.section_id))
         %td= statistic.units
         %td
           = link_to 'Show', statistic

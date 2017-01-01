@@ -12,7 +12,7 @@
 
 class Department < ApplicationRecord
   belongs_to :user
-  has_many :statistics
+  has_many :sections
 
   validates :name, uniqueness: true, presence: true
   validates_associated :user
@@ -22,7 +22,7 @@ class Department < ApplicationRecord
   private
   def set_position
     if self.position.blank?
-      self.position = Department.where(user_id: self.user_id).maximum(:position) + 1
+      self.position = Department.where(user_id: self.user_id).maximum(:position).to_i + 1
     end
   end
 

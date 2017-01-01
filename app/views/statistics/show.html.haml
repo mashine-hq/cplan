@@ -1,6 +1,6 @@
 - @statistic = @statistic.decorate
 %ol.breadcrumb
-  %li.breadcrumb-item= link_to(@statistic.department, department_path(@statistic.department_id))
+  %li.breadcrumb-item= link_to(@statistic.section, section_path(@statistic.section_id))
   %li.breadcrumb-item.active #{@statistic.name} (#{@statistic.units})
   %li.float-xs-right= link_to 'Изменить', edit_statistic_path(@statistic), class: 'button-xs btn-success'
 

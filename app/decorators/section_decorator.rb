@@ -1,4 +1,4 @@
-class StatisticDecorator < Drape::Decorator
+class SectionDecorator < Drape::Decorator
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through
@@ -9,13 +9,5 @@ class StatisticDecorator < Drape::Decorator
   #       object.created_at.strftime("%a %m/%d/%y")
   #     end
   #   end
-
-  def section
-    object.section.name
-  end
-
-  # def department
-  #   object.department.name
-  # end
 
 end

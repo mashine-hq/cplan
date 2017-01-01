@@ -7,13 +7,48 @@ img {
   @extend .img-fluid;
   margin: 0 auto;
 }
+
+header {
+  border-bottom: 1px #ccc solid;
+}
+
 footer {
   margin-top: 40px;
 }
+
+main {
+  padding: 15px;
+}
+
+#sidebar {
+  //@extend .col-xs-2;
+  display: block;
+  float: left;
+  position: relative;
+  width: 220px;
+  li > a {
+    padding: 15px;
+    display: block;
+    border-bottom: 1px #ccc solid;
+  }
+}
+
+#main {
+  //@extend .col-xs-10;
+  //@extend .container-fluid;
+  background: none repeat scroll 0 0 #eee;
+  margin-left: 220px;
+  margin-right: 0;
+  padding-bottom: 25px;
+  padding-top: 15px;
+  position: relative;
+  min-height: 100%;
+}
+
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;
-  }
+}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
@@ -22,25 +57,26 @@ footer {
   @extend .col-md-6;
   @extend .text-xs-center;
 }
+
 .form {
   @extend .col-md-6;
 }
+
 .form-centered {
   @extend .col-md-6;
   @extend .text-xs-center;
 }
+
 .submit {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-lg;
 }
 
-// apply styles to HTML elements
-// to make views framework-neutral
-main {
-  @extend .container;
-  margin-top: 30px; // accommodate the navbar
-}
+//
+//.container-fluid, main {
+//
+//}
 
 section {
   @extend .row;
@@ -55,6 +91,7 @@ section {
   max-width: 320px;
   margin: 0 auto;
 }
+
 .authform form {
   @extend .card;
   @extend .col-md-9;
@@ -62,23 +99,29 @@ section {
   @extend .bg-faded;
   @extend .small;
 }
+
 .authform .right {
   float: right !important;
 }
+
 .authform .button {
   @extend .btn;
   @extend .btn-primary;
 }
+
 .authform fieldset {
   @extend .card;
 }
+
 #error_explanation:not(:empty) {
   @extend .alert;
   @extend .alert-danger;
 }
+
 #error_explanation h2 {
   font-size: 16px;
 }
+
 .button-xs {
   @extend .btn;
   @extend .btn-primary;
