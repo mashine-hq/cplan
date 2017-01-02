@@ -1,0 +1,18 @@
+%h3 Список продуктов
+
+%table.table.table-responsive
+  %thead
+    %tr
+      %th Name
+      %th Enabled
+      %th.actions= link_to '+ Продукт', new_product_path, class: 'button-xs btn-success'
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.name
+        %td= product.enabled
+        %td
+          = link_to 'Show', product
+          = link_to 'Edit', edit_product_path(product)
+          = link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }

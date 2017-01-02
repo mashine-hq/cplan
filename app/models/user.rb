@@ -40,10 +40,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, #:confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
-  after_initialize :set_default_role, :if => :new_record?
-  validates :phone, phone: {possible: true, allow_blank: true, types: [:mobile]}
   has_many :departments
   has_many :statistics
+  has_many :products
+
+  after_initialize :set_default_role, :if => :new_record?
+  validates :phone, phone: {possible: true, allow_blank: true, types: [:mobile]}
   scope :workers, ->(user_id) { where(invited_by_id: user_id).order(:name) }
 
   def set_default_role
@@ -52,6 +54,10 @@ class User < ApplicationRecord
 
   def has_departments?
     self.departments.count > 0
+  end
+
+  def has_products?
+    self.products.count > 0
   end
 
   def has_workers?

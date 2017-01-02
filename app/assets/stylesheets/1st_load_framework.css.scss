@@ -29,14 +29,14 @@ main {
   li > a {
     padding: 15px;
     display: block;
-    border-bottom: 1px #ccc solid;
+    border-bottom: 1px #EFEFEF solid;
   }
 }
 
 #main {
   //@extend .col-xs-10;
   //@extend .container-fluid;
-  background: none repeat scroll 0 0 #eee;
+  background: none repeat scroll 0 0 #F7F7F7;
   margin-left: 220px;
   margin-right: 0;
   padding-bottom: 25px;
@@ -73,10 +73,9 @@ main {
   @extend .btn-lg;
 }
 
-//
-//.container-fluid, main {
-//
-//}
+.breadcrumb::after {
+  display: inline-table;
+}
 
 section {
   @extend .row;

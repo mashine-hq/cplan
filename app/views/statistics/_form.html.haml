@@ -2,7 +2,10 @@
   .form-inputs
     = f.input :name
     = f.association :section,  collection: @departments, as: :grouped_select, group_method: :sections, include_blank: false
+    = f.association :product, collection: @products
     = f.input :units
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn btn-success'
+    - unless @statistic.new_record?
+      = link_to 'Открыть', @statistic, class: 'btn'

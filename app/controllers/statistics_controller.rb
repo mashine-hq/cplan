@@ -22,11 +22,13 @@ class StatisticsController < ApplicationController
   def new
     @statistic = Statistic.new
     @departments =  current_user.departments
+    @products = current_user.products
   end
 
   # GET /statistics/1/edit
   def edit
-    @departments = current_user.departments
+    @departments = current_user.departments.includes(:sections)
+    @products = current_user.products
   end
 
   # POST /statistics
@@ -78,6 +80,6 @@ class StatisticsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def statistic_params
-    params.require(:statistic).permit(:name, :user_id, :section_id, :units)
+    params.require(:statistic).permit(:name, :user_id, :section_id, :product_id, :units)
   end
 end

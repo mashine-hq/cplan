@@ -1,9 +1,9 @@
 = simple_form_for(@section) do |f|
-  = f.error_notification
-
   .form-inputs
     = f.input :department
     = f.input :name
 
   .form-actions
     = f.button :submit
+    - unless @section.new_record?
+      = link_to 'Show', @section, class: 'btn btn-success'

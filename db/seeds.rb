@@ -11,6 +11,9 @@ demo_user = User.create!(email: 'demo@admin.com',
                          name: 'Demo User',
                          password: 'passwd',
                          password_confirmation: 'passwd')
+['SEO', 'SMM', 'WEB'].each do |product|
+  Product.create!(user: demo_user, name: product)
+end
 
 {'Построения' => ['Найма', 'Коммуникации', 'Инспекции и доклады'],
  'Распространения' => ['Реклама и маркетинг', 'Понимание', 'Продажи'],

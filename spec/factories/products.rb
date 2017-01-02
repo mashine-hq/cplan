@@ -1,22 +1,19 @@
 # == Schema Information
 #
-# Table name: statistics
+# Table name: products
 #
 #  id         :integer          not null, primary key
-#  name       :string
-#  units      :string
 #  user_id    :integer
-#  section_id :integer
+#  name       :string
+#  enabled    :boolean
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  product_id :integer
 #
 
 FactoryGirl.define do
-  factory :statistic do
-    name "MyString"
+  factory :product do
     user nil
-    department nil
-    units "MyString"
+    name "MyString"
+    enabled false
   end
 end

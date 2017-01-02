@@ -4,6 +4,10 @@
       %li= link_to 'Создайте Департаменты', new_department_path
     - else
       %li= link_to 'Департаменты', departments_path
+    - unless current_user.has_products?
+      %li= link_to 'Создайте Продукты', new_product_path
+    - else
+      %li= link_to 'Продукты', products_path
     - unless current_user.has_statistics?
       %li= link_to 'Создайте Статистики', new_statistic_path
     - else

@@ -1,19 +1,17 @@
 # == Schema Information
 #
-# Table name: statistics
+# Table name: products
 #
 #  id         :integer          not null, primary key
-#  name       :string
-#  units      :string
 #  user_id    :integer
-#  section_id :integer
+#  name       :string
+#  enabled    :boolean
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  product_id :integer
 #
 
 require 'rails_helper'
 
-RSpec.describe Statistic, type: :model do
+RSpec.describe Product, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

@@ -1,0 +1,10 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @product.name
+%p
+  %b Enabled:
+  = @product.enabled
+
+= link_to 'Edit', edit_product_path(@product)

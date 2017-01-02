@@ -26,6 +26,9 @@ ru:
         name: Название
         user: Пользователь
         position: Положение
+      product:
+        name: Название
+        enabled: Активен
       statistic:
         name: Название
         user: Пользователь
@@ -47,6 +50,7 @@ ru:
       report: Отчет
       section: Отдел
       statistic: Статистика
+      product: Продукт
   confirm: Вы уверены?
   flash:
     success: Данные успешно сохранены
