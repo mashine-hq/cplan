@@ -1,16 +1,16 @@
 - if current_user.owner?
-  %ol.list-unstyled
+  .list-group
     - unless current_user.has_departments?
-      %li= link_to 'Создайте Департаменты', new_department_path
+      = link_to 'Создайте Департаменты', new_department_path, class: 'list-group-item list-group-item-action'
     - else
-      %li= link_to 'Департаменты', departments_path
+      = link_to 'Департаменты', departments_path, class: 'list-group-item list-group-item-action'
     - unless current_user.has_products?
-      %li= link_to 'Создайте Продукты', new_product_path
+      = link_to 'Создайте Продукты', new_product_path, class: 'list-group-item list-group-item-action'
     - else
-      %li= link_to 'Продукты', products_path
+      = link_to 'Продукты', products_path, class: 'list-group-item list-group-item-action'
     - unless current_user.has_statistics?
-      %li= link_to 'Создайте Статистики', new_statistic_path
+      = link_to 'Создайте Статистики', new_statistic_path, class: 'list-group-item list-group-item-action'
     - else
-      %li= link_to 'Статистики', statistics_path
+      = link_to 'Статистики', statistics_path, class: 'list-group-item list-group-item-action'
     - unless current_user.has_workers?
-      %li= link_to 'Пользователи', users_path
+      = link_to 'Пользователи', users_path, class: 'list-group-item list-group-item-action'

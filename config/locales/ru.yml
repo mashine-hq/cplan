@@ -35,6 +35,7 @@ ru:
         units: Ед. Измерения
         department: Департамент
         section: Отдел
+        data_type: Тип графика
       report:
         units: Единицы
         report_at: Дата

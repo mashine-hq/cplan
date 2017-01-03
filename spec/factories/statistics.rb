@@ -10,6 +10,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  product_id :integer
+#  data_type  :integer          default("positive"), not null
 #
 
 FactoryGirl.define do

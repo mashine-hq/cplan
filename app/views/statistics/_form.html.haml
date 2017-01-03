@@ -1,10 +1,10 @@
-= simple_form_for(@statistic) do |f|
+= simple_form_for(@statistic, html: { class: 'col-xs-6'}) do |f|
   .form-inputs
     = f.input :name
     = f.association :section,  collection: @departments, as: :grouped_select, group_method: :sections, include_blank: false
     = f.association :product, collection: @products
     = f.input :units
-
+    = f.input :data_type, collection: [['Положительный', 'positive'] ,['Отрицательный', 'negative']], include_blank: false
   .form-actions
     = f.button :submit, class: 'btn btn-success'
     - unless @statistic.new_record?
