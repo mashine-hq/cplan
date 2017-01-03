@@ -6,7 +6,7 @@
       %th Название
       %th #{model_name('section')}
       %th Единицы
-      %th= link_to '+ Статистику', new_statistic_path, class: 'btn-success button-xs'
+      %th= link_to '+ Статистику', new_statistic_path, class: 'button-xs'
 
   %tbody
     - @statistics.decorate.each do |statistic|

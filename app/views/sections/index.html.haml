@@ -1,11 +1,11 @@
 %h3 Список отделов
 
-%table
+%table.table.table-responsive
   %thead
     %tr
       %th Департамент
       %th Название
-      %th= link_to '+ Отдел', new_section_path, class: 'btn btn-success btn-xs'
+      %th= link_to '+ Отдел', new_section_path, class: 'button-xs'
 
   %tbody
     - @sections.decorate.each do |section|
@@ -16,4 +16,3 @@
           = link_to 'Show', section
           = link_to 'Edit', edit_section_path(section)
           = link_to 'Destroy', section, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
