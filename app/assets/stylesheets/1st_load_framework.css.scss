@@ -13,7 +13,10 @@ header {
 }
 
 footer {
+  border-top: 1px solid #efefef;
   margin-top: 40px;
+  padding: 15px;
+  clear: both;
 }
 
 main {
@@ -26,10 +29,8 @@ main {
   float: left;
   position: relative;
   width: 220px;
-  li > a {
-    padding: 15px;
-    display: block;
-    border-bottom: 1px #EFEFEF solid;
+  .list-group-item:last-child, .list-group-item:first-child {
+    border-radius: initial;
   }
 }
 
@@ -89,27 +90,6 @@ section {
   padding-top: 30px;
   max-width: 320px;
   margin: 0 auto;
-}
-
-.authform form {
-  @extend .card;
-  @extend .col-md-9;
-  padding-bottom: 40px;
-  @extend .bg-faded;
-  @extend .small;
-}
-
-.authform .right {
-  float: right !important;
-}
-
-.authform .button {
-  @extend .btn;
-  @extend .btn-primary;
-}
-
-.authform fieldset {
-  @extend .card;
 }
 
 #error_explanation:not(:empty) {
