@@ -8,6 +8,7 @@
 #  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  enabled    :boolean          default(TRUE), not null
 #
 
 require 'rails_helper'

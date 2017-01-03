@@ -4,8 +4,8 @@
   %thead
     %tr
       %th Название
-      %th Положение
-      %th= link_to 'Добавить новый', new_department_path, class: 'button-xs btn-success'
+      %th Сортировка
+      %th= link_to '+ Департамент', new_department_path, class: 'button-xs btn-success'
 
   %tbody
     - @departments.each do |department|

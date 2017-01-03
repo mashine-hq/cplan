@@ -1,12 +1,15 @@
 = simple_form_for(@department, html: { class: 'form-horizontal' }) do |f|
-  - content_for :hint_name do
-    - if @department.new_record?
-      - ['Административный', 'Финансовый', 'Квалификационный', 'Маркетинга', 'Технический'].each do |department|
-        %span.department.click= department
-  = f.input :name, hint: content_for?(:hint_name) ? yield(:hint_name) : ''
-  = f.input :position, hint: 'Не обязательно'
-  = f.button :submit
-  = link_to 'Назад к списку департаментов', departments_path
+  .form-inputs
+    - content_for :hint_name do
+      - if @department.new_record?
+        - ['Административный', 'Финансовый', 'Квалификационный', 'Маркетинга', 'Технический'].each do |department|
+          %span.department.click= department
+    = f.input :name, hint: content_for?(:hint_name) ? yield(:hint_name) : ''
+    = f.input :position, hint: 'Не обязательно'
+    = f.input :enabled
+  .form-actions
+    = f.button :submit
+    = link_to 'Назад', :back
 
 - content_for :javascript do
   :javascript

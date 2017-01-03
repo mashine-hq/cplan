@@ -43,6 +43,7 @@ class User < ApplicationRecord
   has_many :departments
   has_many :statistics
   has_many :products
+  has_many :sections, through: :departments
 
   after_initialize :set_default_role, :if => :new_record?
   validates :phone, phone: {possible: true, allow_blank: true, types: [:mobile]}
@@ -62,6 +63,10 @@ class User < ApplicationRecord
 
   def has_workers?
     User.workers(self.id).count > 0
+  end
+
+  def has_sections?
+    Section.where(department_id: self.department_ids).count > 0
   end
 
   def has_statistics?

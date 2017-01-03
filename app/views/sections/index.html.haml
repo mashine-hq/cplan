@@ -3,12 +3,12 @@
 %table
   %thead
     %tr
-      %th Department
-      %th Name
-      %th= link_to 'Новый отдел', new_section_path, class: 'btn btn-success btn-xs'
+      %th Департамент
+      %th Название
+      %th= link_to '+ Отдел', new_section_path, class: 'btn btn-success btn-xs'
 
   %tbody
-    - @sections.each do |section|
+    - @sections.decorate.each do |section|
       %tr
         %td= section.department
         %td= section.name

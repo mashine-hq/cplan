@@ -8,6 +8,7 @@
 #  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  enabled    :boolean          default(TRUE), not null
 #
 
 class Department < ApplicationRecord
@@ -16,13 +17,15 @@ class Department < ApplicationRecord
 
   validates :name, uniqueness: true, presence: true
   validates_associated :user
-  scope :ordered, -> { order(:position, :name) }
   before_validation :set_position
+
+  scope :ordered, -> { order(:position, :name) }
+  default_scope { order(:position) }
 
   private
   def set_position
     if self.position.blank?
-      self.position = Department.where(user_id: self.user_id).maximum(:position).to_i + 1
+      self.position = self.user.departments.maximum(:position).to_i + 1
     end
   end
 

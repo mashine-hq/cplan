@@ -26,6 +26,7 @@ ru:
         name: Название
         user: Пользователь
         position: Положение
+        enabled: Активен
       product:
         name: Название
         enabled: Активен
@@ -36,6 +37,10 @@ ru:
         department: Департамент
         section: Отдел
         data_type: Тип графика
+      section:
+        department: Департамент
+        name: Название
+        enabled: Активен
       report:
         units: Единицы
         report_at: Дата

@@ -1,10 +1,11 @@
 class SectionsController < ApplicationController
   before_action :set_section, only: [:show, :edit, :update, :destroy]
+  layout 'dashboard'
 
   # GET /sections
   # GET /sections.json
   def index
-    @sections = Section.all
+    @sections = current_user.sections.all
   end
 
   # GET /sections/1
@@ -64,11 +65,11 @@ class SectionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_section
-      @section = Section.find(params[:id])
+      @section = Section.where(department_id: current_user.department_ids).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def section_params
-      params.require(:section).permit(:department, :name)
+      params.require(:section).permit(:department, :name, :enabled)
     end
 end

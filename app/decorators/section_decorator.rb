@@ -10,4 +10,7 @@ class SectionDecorator < Drape::Decorator
   #     end
   #   end
 
+  def department
+    object.department.name
+  end
 end

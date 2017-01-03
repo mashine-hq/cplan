@@ -3,10 +3,10 @@
 %table.table.table-responsive
   %thead
     %tr
-      %th Name
+      %th Название
       %th #{model_name('section')}
-      %th Units
-      %th= link_to 'New Statistic', new_statistic_path, class: 'btn-success button-xs'
+      %th Единицы
+      %th= link_to '+ Статистику', new_statistic_path, class: 'btn-success button-xs'
 
   %tbody
     - @statistics.decorate.each do |statistic|
