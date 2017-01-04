@@ -3,6 +3,7 @@
     - unless current_user.has_departments?
       = link_to 'Создайте Департаменты', new_department_path, class: 'list-group-item list-group-item-action'
     - else
+      = link_to 'Дашбоард', dashboard_path, class: 'list-group-item list-group-item-action'
       = link_to 'Департаменты', departments_path, class: 'list-group-item list-group-item-action'
     - unless current_user.has_sections?
       = link_to 'Создайте отделы', new_section_path, class: 'list-group-item list-group-item-action'

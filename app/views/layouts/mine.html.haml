@@ -8,10 +8,12 @@
   %body
     %header
       = render 'layouts/navigation'
-    -##main{:role => "main"}
-
-    = render 'layouts/messages'
-    = yield
+    #sidebar
+      = render 'layouts/sidebar'
+    #main{:role => "main"}
+      .container
+        = render 'layouts/messages'
+        = yield
     %footer.text-xs-center
       SMARTSTATISTIC 2016
     = stylesheet_link_tag 'application', media: 'all'

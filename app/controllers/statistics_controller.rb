@@ -1,6 +1,6 @@
 class StatisticsController < ApplicationController
   before_action :set_statistic, only: [:show, :edit, :update, :destroy]
-  layout 'dashboard'
+  layout 'mine'
 
   # GET /statistics
   # GET /statistics.json

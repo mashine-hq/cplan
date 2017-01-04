@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: [:show, :edit, :update, :destroy]
-  layout 'dashboard'
+  layout 'mine'
 
   # GET /departments
   # GET /departments.json

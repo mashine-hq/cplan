@@ -19,7 +19,7 @@ class Department < ApplicationRecord
   validates_associated :user
   before_validation :set_position
 
-  scope :ordered, -> { order(:position, :name) }
+  scope :ordered, -> { order(:position, :name, :enabled) }
   default_scope { order(:position) }
 
   private

@@ -1,6 +1,6 @@
 class VisitorsController < ApplicationController
   #skip_before_action :authenticate_user!
-  layout 'dashboard'
+  layout 'mine'
 
   def index
     if current_user

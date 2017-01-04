@@ -9,26 +9,27 @@
 #puts 'CREATED ADMIN USER: ' << user.email
 demo_user = User.create!(email: 'demo@admin.com',
                          name: 'Demo User',
-                         password: 'passwd',
+                         password: 'password',
                          password_confirmation: 'passwd')
 ['SEO', 'SMM', 'WEB'].each do |product|
   Product.create!(user: demo_user, name: product)
 end
 
 {'Построения' => ['Найма', 'Коммуникации', 'Инспекции и доклады'],
- 'Распространения' => ['Реклама и маркетинг', 'Понимание', 'Продажи'],
+ 'Распространения' => ['Pr и маркетинг', 'Понимание', 'Продажи'],
  'Финансов' => ['Доходы', 'Расходы', 'Активы и мат часть'],
  'Техническое' => ['Планирование', 'Обеспечение', 'Производство'],
- 'Квалификации и качества' => ['Качества', 'Обучение персонала', 'Коррекции'],
- 'Расширения' => ['Связи с общественностью', 'Вводных услуг', 'Работа с партнерами'],
- 'Административное' => ['Офис учредителя', 'Юр Вопросов', 'Исполнительн. Дир'], }.each do |department, sections|
+ 'Квалиф/качества' => ['Качества', 'Обучение персонала', 'Коррекции'],
+ 'Расширения' => ['Общ. Связи', 'Вводных услуг', 'Работа с партнерами'],
+ 'Администрации' => ['Офис учредит.', 'Юр Вопросов', 'Исполн. Дир'], }.each do |department, sections|
   if dep = Department.create!(name: department, user: demo_user)
     puts "Created Department: #{dep.name}"
     sections.each do |_section|
       puts "\tSection: #{_section}"
       section = Section.create!(name: _section, department: dep)
-      stat = Statistic.create!(user: demo_user, section: section, name: "Стат #{_section}", units: ['час', 'шт', 'звонок'].shuffle.first)
-      if stat.id < 4
+
+      rand(1..4).times.each do |n|  # add many stats per section
+        stat = Statistic.create!(user: demo_user, section: section, name: "Стат #{n}", units: ['час', 'шт', 'звонок'].shuffle.first)
         start_date = (Time.now - 2.month)
         while start_date < Time.now
           Report.create!(statistic: stat, report_at: start_date, units: (4..8).to_a.shuffle.first)

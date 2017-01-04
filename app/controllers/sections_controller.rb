@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
   before_action :set_section, only: [:show, :edit, :update, :destroy]
-  layout 'dashboard'
+  layout 'mine'
 
   # GET /sections
   # GET /sections.json

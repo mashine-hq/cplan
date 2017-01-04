@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-  layout 'dashboard'
+  layout 'mine'
 
   # GET /reports
   # GET /reports.json

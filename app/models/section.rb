@@ -14,7 +14,7 @@ class Section < ApplicationRecord
   belongs_to :department
   has_many :statistics
 
-  default_scope { order(:department_id, :name) }
+  default_scope { order(:department_id, :name, :enabled) }
   validates :name, presence: true
 
 end

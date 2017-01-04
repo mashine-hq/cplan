@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  resources :products
-  resources :sections
   root to: 'visitors#index'
 
+  resource :dashboard
+  resources :departments
+  resources :sections
+  resources :products
   resources :statistics do
     resources :reports, only: [:index, :create]
   end
 
-  resources :departments
+
   namespace :admin do
     resources :users
     root to: "users#index"
@@ -17,4 +19,5 @@ Rails.application.routes.draw do
 
   resources :users
   get '/pages/*id', to: 'pages#show'
+
 end
