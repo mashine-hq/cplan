@@ -13,13 +13,14 @@
 
 class Department < ApplicationRecord
   belongs_to :user
-  has_many :sections
+  has_many :sections, dependent: :destroy
 
   validates :name, uniqueness: true, presence: true
   validates_associated :user
   before_validation :set_position
 
-  scope :ordered, -> { order(:position, :name, :enabled) }
+  scope :ordered, -> { order(:enabled, :position, :name) }
+  scope :enabled, -> { where(enabled: true) }
   default_scope { order(:position) }
 
   private

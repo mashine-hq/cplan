@@ -12,7 +12,7 @@
 
 class Product < ApplicationRecord
   belongs_to :user
-  has_many :statistics
+  has_many :statistics, dependent: :nullify
 
   validates :name, :user_id, presence: true, allow_blank: false
 

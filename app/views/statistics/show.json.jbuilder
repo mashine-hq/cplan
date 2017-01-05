@@ -1,1 +1,1 @@
-json.partial! "statistics/statistic", statistic: @statistic
+json.partial! "statistics/statistic", statistic=> @statistic

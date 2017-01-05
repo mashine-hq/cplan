@@ -2,4 +2,4 @@
   - @departments.each do |department|
     .column.col-xs
       %h5= department.name
-      = render partial: 'section', collection: department.sections
+      = render partial: 'section', collection: department.sections.enabled

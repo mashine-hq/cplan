@@ -14,6 +14,10 @@ class StatisticDecorator < Drape::Decorator
     object.section.name
   end
 
+  def product
+    object.product&.name
+  end
+
   # def department
   #   object.department.name
   # end

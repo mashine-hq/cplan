@@ -12,9 +12,10 @@
 
 class Section < ApplicationRecord
   belongs_to :department
-  has_many :statistics
+  has_many :statistics, dependent: :destroy
 
   default_scope { order(:department_id, :name, :enabled) }
+  scope :enabled, -> { where(enabled: true) }
   validates :name, presence: true
 
 end

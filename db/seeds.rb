@@ -10,7 +10,7 @@
 demo_user = User.create!(email: 'demo@admin.com',
                          name: 'Demo User',
                          password: 'password',
-                         password_confirmation: 'passwd')
+                         password_confirmation: 'password')
 ['SEO', 'SMM', 'WEB'].each do |product|
   Product.create!(user: demo_user, name: product)
 end

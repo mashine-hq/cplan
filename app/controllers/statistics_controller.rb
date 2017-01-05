@@ -5,23 +5,29 @@ class StatisticsController < ApplicationController
   # GET /statistics
   # GET /statistics.json
   def index
-    @statistics = current_user.statistics.includes(:section).all
+    @statistics = current_user.statistics.includes(:section, :product).all
   end
 
   # GET /statistics/1
   # GET /statistics/1.json
   def show
     #stat_ids = [1, 3]
-    stats = Statistic.where(id: params[:id]).all
-    column_condition = stats.map { |stat| "sum(case when reports.statistic_id = '#{stat.id}' then summary else 0 end) AS \"#{stat.name}\"" }.join(",\n")
-    result = Report.connection.select_all("SELECT report_at, #{column_condition} FROM reports GROUP BY report_at ORDER BY report_at")
-    @stats = {columns: result.first.keys.to_a, rows: result.map(&:values)}
+    # stats = Statistic.where(id: params[:id]).all
+    # column_condition = stats.map { |stat| "sum(case when reports.statistic_id = '#{stat.id}' then summary else 0 end) AS \"#{stat.name}\"" }.join(",\n")
+    # result = Report.connection.select_all("SELECT report_at, #{column_condition} FROM reports GROUP BY report_at ORDER BY report_at")
+    # @stats = {columns: result.first.keys.to_a, rows: result.map(&:values)}
+    bar_data = @statistic.graph_data #(nil, 'week', 'week')
+    summary_data = @statistic.summary_data #(nil, 'Накопительно')
+    respond_to do |format|
+      format.html {}
+      format.json { render_success([bar_data, summary_data]) }
+    end
   end
 
   # GET /statistics/new
   def new
     @statistic = Statistic.new
-    @departments =  current_user.departments
+    @departments = current_user.departments
     @products = current_user.products
   end
 
@@ -34,7 +40,7 @@ class StatisticsController < ApplicationController
   # POST /statistics
   # POST /statistics.json
   def create
-    @departments =  current_user.departments
+    @departments = current_user.departments
     @statistic = Statistic.new(statistic_params)
     @statistic.user = current_user
     respond_to do |format|

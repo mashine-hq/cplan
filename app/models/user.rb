@@ -40,8 +40,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, #:confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
-  has_many :departments
-  has_many :statistics
+  has_many :departments, -> { order(:position, :name) }
+  has_many :statistics, -> { order(:section_id, :name) }
   has_many :products
   has_many :sections, through: :departments
 

@@ -1,4 +1,5 @@
 .card
   .card-header= section.name
   - section.statistics.each do |statistic|
-    %p=statistic.name
+    = statistic.name
+    = content_tag('div', '<svg></svg>'.html_safe, {id: dom_id(statistic), class: 'stat with-3d-shadow with-transitions', data: {json_path: statistic_path(statistic, format: 'json')}})

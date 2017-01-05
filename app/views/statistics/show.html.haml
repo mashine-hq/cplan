@@ -6,27 +6,9 @@
 
 = render partial: 'report_form', locals: {statistic: @statistic.object}
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-- rows = @stats[:rows].map{ |row|  date = row[0].split('-'); "data.addRow([#{'new Date('+[date[0], date[1].to_i - 1, date[2] ].join(',')+')'}, #{row[1..-1].map(&:to_i).join(',')}]);" }.join("\n")
-- columns = @stats[:columns][1..-1].map{|column| "data.addColumn('number','#{column}');"}.join("\n")
-- content_for :javascript do
-
-  :javascript
-    google.charts.load('current', {'packages':['annotationchart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = new google.visualization.DataTable();
-      data.addColumn({type: 'date', label: 'Date'});
-      #{columns}
-      #{rows}
-      var chart = new google.visualization.AnnotationChart(document.getElementById('time_line_chart'));
-      var options = {
-        displayAnnotations: true
-      };
-      chart.draw(data, options);
-      $('#time_line_chart_AnnotationChart_zoomControlContainer_1-month').click();
-    }
-
 .row
-  .col-xl-6
-    #time_line_chart
+  .col-xl-8
+    //%button{onclick: 'chart.focusEnable(!chart.focusEnable()); chart.update();'} Включить зум
+    = content_tag('div', '<svg></svg>'.html_safe, {id: dom_id(@statistic),
+    class: 'stat with-3d-shadow with-transitions', style: 'height: 350px',
+    data: {json_path: statistic_path(@statistic, format: 'json', chart_type: 'bar'), chart_type: 'bar'}})

@@ -21,7 +21,7 @@ footer {
 main {
   padding: 15px;
 }
-
+//.stat {min-height: 15em;}
 #sidebar {
   @extend .col-xs-2;
   padding: 0;
@@ -57,7 +57,7 @@ main {
     @extend .col-sm-4;
     @extend .col-md-3;
     @extend .col-lg-3;
-    @extend .col-xl-2;
+    @extend .col-xl-3;
     @extend .text-xs-center;
     //  width: 14.25%;
     padding: 2px;

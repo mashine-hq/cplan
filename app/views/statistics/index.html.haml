@@ -5,6 +5,7 @@
     %tr
       %th Название
       %th #{model_name('section')}
+      %th #{model_name('product')}
       %th Единицы
       %th= link_to '+ Статистику', new_statistic_path, class: 'button-xs'
 
@@ -13,6 +14,7 @@
       %tr
         %td= statistic.name
         %td= link_to(statistic.section, section_path(statistic.section_id))
+        %td= statistic.product
         %td= statistic.units
         %td
           = link_to 'Show', statistic

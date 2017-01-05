@@ -1,9 +1,8 @@
 = simple_form_for([statistic, Report.new], html: { class: 'form-horizontal' }) do |f|
-  .row
-    .col-xs-3
-      = f.input :report_at, as: :date, start_year: Date.today.year - 1, end_year: Date.today.year, use_two_digit_numbers: true
-    .col-xs-2
-      = f.label :units, statistic.units
-      = f.input :units, title: statistic.units, data: {toggle: 'tooltip'}, label: false
-    .col-xs-1
-      = f.button :submit, class: 'btn-success align-middle'
+  .col-xs-3
+    = f.input :report_at, as: :date, start_year: Date.today.year - 1, end_year: Date.today.year, use_two_digit_numbers: true
+  .col-xs-3
+    = f.input :units,  input_html: {title: statistic.units, data: {toggle: 'tooltip'},  label: false}
+  .col-xs-2
+    %label &nbsp;
+    = f.button :submit, class: 'btn-success align-middle'
