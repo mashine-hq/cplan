@@ -1,5 +1,7 @@
 - @statistic = @statistic.decorate
+- department = @statistic.object.section.department
 %ol.breadcrumb
+  %li.breadcrumb-item= link_to(department.name, department_path(department))
   %li.breadcrumb-item= link_to(@statistic.section, section_path(@statistic.section_id))
   %li.breadcrumb-item.active #{@statistic.name} (#{@statistic.units})
   %li.float-xs-right= link_to 'Изменить', edit_statistic_path(@statistic), class: 'button-xs btn-success'
@@ -9,6 +11,4 @@
 .row
   .col-xl-8
     //%button{onclick: 'chart.focusEnable(!chart.focusEnable()); chart.update();'} Включить зум
-    = content_tag('div', '<svg></svg>'.html_safe, {id: dom_id(@statistic),
-    class: 'stat with-3d-shadow with-transitions', style: 'height: 350px',
-    data: {json_path: statistic_path(@statistic, format: 'json', chart_type: 'bar'), chart_type: 'bar'}})
+    = statistic_bar(@statistic)

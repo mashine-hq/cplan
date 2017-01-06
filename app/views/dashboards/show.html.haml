@@ -1,5 +1,13 @@
+- unless @products.empty?
+  = select_tag :product_id, options_from_collection_for_select(@products, 'id', 'name', params[:product_id]), {prompt: 'Выберите продукт'}
 .dashboard
   - @departments.each do |department|
     .column.col-xs
       %h5= department.name
       = render partial: 'section', collection: department.sections.enabled
+
+- content_for :javascript do
+  :javascript
+    $('select#product_id').on('change', function(){
+      window.location = '#{dashboard_url}' + "?product_id=" + this.options[this.selectedIndex].value + "&#{request.query_parameters.except(:product_id).to_query}"
+    });

@@ -1,0 +1,7 @@
+%tr
+  %td= section.department
+  %td= section.name
+  %td
+    = link_to 'Show', section
+    = link_to 'Edit', edit_section_path(section)
+    = link_to 'Destroy', section, :method => :delete, :data => { :confirm => 'Are you sure?' }

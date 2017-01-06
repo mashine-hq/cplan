@@ -16,7 +16,7 @@ Rails.application.configure do
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
 
-    config.cache_store = :memory_store
+    config.cache_store = :dalli_store
     config.public_file_server.headers = {
       'Cache-Control' => 'public, max-age=172800'
     }
@@ -52,7 +52,7 @@ Rails.application.configure do
   #   password: Rails.application.secrets.email_provider_password
   # }
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'localhost.dev:3000' }
+  config.action_mailer.default_url_options = {:host => 'localhost.dev:3000'}
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.raise_delivery_errors = true
   # Send email in development mode?

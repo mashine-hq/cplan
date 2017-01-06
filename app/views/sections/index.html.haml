@@ -8,11 +8,4 @@
       %th= link_to '+ Отдел', new_section_path, class: 'button-xs'
 
   %tbody
-    - @sections.decorate.each do |section|
-      %tr
-        %td= section.department
-        %td= section.name
-        %td
-          = link_to 'Show', section
-          = link_to 'Edit', edit_section_path(section)
-          = link_to 'Destroy', section, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    = render @sections.decorate

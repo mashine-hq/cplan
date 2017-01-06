@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'simple_form'
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 gem 'drape'
+gem 'dalli'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

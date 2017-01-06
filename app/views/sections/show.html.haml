@@ -1,12 +1,6 @@
-%p#notice= notice
+%ol.breadcrumb
+  %li.breadcrumb-item= link_to(@section.department, department_path(@section.department_id))
+  %li.breadcrumb-item.active= @section
+  %li.float-xs-right= link_to 'Изменить', edit_section_path(@section), class: 'button-xs btn-success'
 
-%p
-  %b Department:
-  = @section.department
-%p
-  %b Name:
-  = @section.name
-
-= link_to 'Edit', edit_section_path(@section)
-\|
-= link_to 'Back', sections_path
+= render partial: 'statistic', collection: @section.statistics

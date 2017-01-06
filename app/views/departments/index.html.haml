@@ -1,18 +1,24 @@
-%h3 Департаменты
+.row
+  .col-xs-3.text-capitalize.text-muted Департаменты
+  .col-xs-6.offset-xs-3
+    = link_to '+ Департамент', new_department_path, class: 'button-xs'
+    = link_to '+ Отдел', new_section_path, class: 'button-xs'
+    = link_to '+ Продукт', new_product_path, class: 'button-xs'
+    = link_to '+ Статистику', new_statistic_path, class: 'button-xs'
 
-%table.table.table-responsive
-  %thead
-    %tr
-      %th Название
-      %th Сортировка
-      %th= link_to '+ Департамент', new_department_path, class: 'button-xs'
+%ul#departments.nav.nav-tabs{role: 'tablist'}
+  = render @departments
 
-  %tbody
-    - @departments.each do |department|
-      %tr
-        %td= department.name
-        %td= department.position
-        %td.form-actions
-          = link_to 'Show', department
-          = link_to 'Edit', edit_department_path(department)
-          = link_to 'Destroy', department, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.tab-content
+  #home.tab-pane.active{role: 'tabpanel'}
+  - @departments.each do |department|
+    .tab-pane{id: dom_id(department)}
+      -# department.sections.each do |section|
+        = render partial: 'section', locals: {section: section}
+      = render partial: 'section', collection: department.sections
+
+:css
+  .tab-pane {min-height: 300px; padding: 5px}
+- content_for :javascript do
+  :javascript
+    $('#departments a:first').tab('show')

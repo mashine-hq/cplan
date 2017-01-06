@@ -20,7 +20,7 @@ class StatisticsController < ApplicationController
     summary_data = @statistic.summary_data #(nil, 'Накопительно')
     respond_to do |format|
       format.html {}
-      format.json { render_success([bar_data, summary_data]) }
+      format.json { render json: [bar_data, summary_data] }
     end
   end
 

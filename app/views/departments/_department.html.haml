@@ -1,0 +1,5 @@
+%li.nav-item
+  = link_to department.name, '#'+dom_id(department), class: 'nav-link', role: 'tab', data: {toggle: 'tab'}
+  -#%span.form-actions.float-xs-right.small
+    = link_to 'E', edit_department_path(department)
+    = link_to 'D', department, :method => :delete, :data => { :confirm => 'Are you sure?' }

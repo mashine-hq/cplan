@@ -1,0 +1,5 @@
+.section
+  = link_to section.name, section
+  %span.form-actions.float-xs-right
+    = link_to 'Edit', edit_section_path(section)
+    = link_to 'Destroy', section, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -11,6 +11,7 @@ class SectionsController < ApplicationController
   # GET /sections/1
   # GET /sections/1.json
   def show
+    @section = @section.decorate
   end
 
   # GET /sections/new

@@ -13,4 +13,8 @@ class SectionDecorator < Drape::Decorator
   def department
     object.department.name
   end
+
+  def to_s
+    object.name
+  end
 end

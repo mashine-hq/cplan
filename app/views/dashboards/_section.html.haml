@@ -1,5 +1,5 @@
 .card
   .card-header= section.name
-  - section.statistics.each do |statistic|
-    = statistic.name
-    = content_tag('div', '<svg></svg>'.html_safe, {id: dom_id(statistic), class: 'stat with-3d-shadow with-transitions', data: {json_path: statistic_path(statistic, format: 'json')}})
+  - section.statistics.where(product_id: params[:product_id].blank? ? nil : params[:product_id]).each do |statistic|
+    = link_to statistic.name, statistics_path(statistic)
+    = statistic_miltichart(statistic)

@@ -112,6 +112,7 @@ GEM
       execjs
     coffee-script-source (1.11.1)
     concurrent-ruby (1.0.2)
+    dalli (2.7.6)
     database_cleaner (1.5.3)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
@@ -350,6 +351,7 @@ DEPENDENCIES
   capistrano-rvm (~> 0.1.1)
   capybara
   coffee-rails (~> 4.2)
+  dalli
   database_cleaner
   devise
   devise_invitable
